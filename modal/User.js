@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+var mongoose = require('mongoose');
 
-const userSchema = new mongoose.Schema({
+var userSchema = new mongoose.Schema({
     aud: {
         type: String,
         required: true
@@ -57,8 +57,12 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     }
-})
+});
 
-export const user = mongoose.model('user', userSchema);
+var user = mongoose.model('user', userSchema);
+
+module.exports = {
+    user: user
+};
 
 // export user;
