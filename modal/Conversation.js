@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+var mongoose = require("mongoose");
 
-const ConversationSchema = new mongoose.Schema({
+var ConversationSchema = new mongoose.Schema({
     members: {
         type: Array
     },
@@ -12,6 +12,6 @@ const ConversationSchema = new mongoose.Schema({
     }
 );
 
-const conversation = mongoose.model('Conversation', ConversationSchema);
+var conversation = mongoose.model('Conversation', ConversationSchema);
 
-export default conversation;
+module.exports = conversation;
