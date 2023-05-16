@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
   aud: {
@@ -21,7 +21,6 @@ const userSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-
   given_name: {
     type: String,
     required: true,
@@ -59,7 +58,7 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
-export const addUser = async (request, response) => {
+exports.addUser = async function(request, response) {
     try {
       // Validate request body
       const requiredFields = [
@@ -104,13 +103,13 @@ export const addUser = async (request, response) => {
       console.error(error);
       response.status(500).json('Internal Server Error');
     }
-  };
+};
   
-  export const getUser = async (request, response) => {
+exports.getUser = async function(request, response) {
     try {
         const user = await User.find({});
         response.status(200).json(user);
     } catch (error) {
         response.status(500).json(error);
     }
-}
+};
