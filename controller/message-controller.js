@@ -1,8 +1,7 @@
-import Message from "../modal/Message.js";
-import Conversation from '../modal/Conversation.js';
+const Message = require("../modal/Message.js");
+const Conversation = require('../modal/Conversation.js');
 
-
-export const newMessage = async (request, response) => {
+exports.newMessage = async function(request, response) {
     const newMessage = new Message(request.body);
     try {
         await newMessage.save();
@@ -11,15 +10,13 @@ export const newMessage = async (request, response) => {
     } catch (error) {
         response.status(500).json(error);
     }
+};
 
-}
-
-export const getMessages = async (request, response) => {
+exports.getMessages = async function(request, response) {
     try {
         const messages = await Message.find({ conversationId: request.params.id });
         response.status(200).json(messages);
     } catch (error) {
         response.status(500).json(error);
     }
-
-}
+};
